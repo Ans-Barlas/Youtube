@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Send Reuben Your Ideas 💡</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --yellow: #FFD93D;
+      --orange: #FF6B35;
+      --pink: #FF4D8D;
+      --blue: #4ECDC4;
+      --purple: #A855F7;
+      --bg: #FFFBF0;
+      --card: #ffffff;
+      --text: #1a1a2e;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Fun squiggly background shapes */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, #FFD93D55, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+      pointer-events: none;
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -80px; left: -80px;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, #4ECDC455, transparent 70%);
+      border-radius: 50%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* HEADER */
+    header {
+      text-align: center;
+      margin-bottom: 36px;
+      animation: fadeDown 0.6s ease both;
+    }
+
+    .emoji-burst {
+      font-size: 2.8rem;
+      display: block;
+      margin-bottom: 8px;
+      animation: spin 1s ease both 0.2s;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(-20deg) scale(0.5); opacity: 0; }
+      to   { transform: rotate(0deg) scale(1); opacity: 1; }
+    }
+
+    h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      line-height: 1.1;
+      background: linear-gradient(135deg, var(--orange), var(--pink), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+
+    .tagline {
+      font-size: 1.05rem;
+      color: #555;
+      font-weight: 600;
+    }
+
+    .reward-badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: #1a1a2e;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1rem;
+      padding: 6px 18px;
+      border-radius: 999px;
+      margin-top: 12px;
+      border: 2px solid #e8c200;
+      box-shadow: 3px 3px 0 #e8c200;
+      animation: bounce 1s ease 0.8s both;
+    }
+
+    @keyframes bounce {
+      0%   { transform: translateY(20px); opacity: 0; }
+      60%  { transform: translateY(-6px); }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    /* VIDEO */
+    .video-wrap {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12), 6px 6px 0 var(--orange);
+      margin-bottom: 36px;
+      animation: fadeUp 0.6s ease 0.3s both;
+      border: 3px solid var(--orange);
+    }
+
+    .video-wrap iframe {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: none;
+    }
+
+    /* ENCOURAGE TEXT */
+    .encourage {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 32px;
+      line-height: 1.7;
+      animation: fadeUp 0.6s ease 0.45s both;
+    }
+
+    .encourage strong {
+      color: var(--pink);
+    }
+
+    /* FORM CARD */
+    .form-card {
+      background: var(--card);
+      border-radius: 24px;
+      padding: 36px 32px;
+      border: 2.5px solid #eee;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.07), 6px 6px 0 var(--blue);
+      animation: fadeUp 0.6s ease 0.55s both;
+    }
+
+    @keyframes fadeUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeDown {
+      from { transform: translateY(-20px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+
+    .form-card h2 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.6rem;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 7px;
+      color: #333;
+    }
+
+    label span {
+      font-size: 1.1em;
+      margin-right: 4px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border: 2.5px solid #e0e0e0;
+      border-radius: 12px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      background: #FAFAFA;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      color: var(--text);
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--purple);
+      box-shadow: 0 0 0 3px #A855F730;
+      background: #fff;
+    }
+
+    textarea { min-height: 120px; }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--orange), var(--pink));
+      color: white;
+      font-family: 'Fredoka One', cursive;
+      font-size: 1.3rem;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 0 #c23a6e, 0 6px 20px rgba(255,77,141,0.3);
+      transition: transform 0.15s, box-shadow 0.15s;
+      margin-top: 10px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 #c23a6e, 0 10px 24px rgba(255,77,141,0.35);
+    }
+
+    .submit-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 0 #c23a6e;
+    }
+
+    /* SUCCESS STATE */
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 48px 32px;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .success-msg .big-emoji {
+      font-size: 4rem;
+      display: block;
+      margin-bottom: 16px;
+      animation: spin 0.5s ease both;
+    }
+
+    .success-msg h2 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2rem;
+      color: var(--orange);
+      margin-bottom: 14px;
+    }
+
+    .success-msg p {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.8;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* Confetti dots */
+    .dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .dots span {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      animation: dotBounce 0.6s ease infinite alternate;
+    }
+    .dots span:nth-child(1) { background: var(--yellow); animation-delay: 0s; }
+    .dots span:nth-child(2) { background: var(--pink); animation-delay: 0.15s; }
+    .dots span:nth-child(3) { background: var(--blue); animation-delay: 0.3s; }
+    .dots span:nth-child(4) { background: var(--purple); animation-delay: 0.45s; }
+    .dots span:nth-child(5) { background: var(--orange); animation-delay: 0.6s; }
+
+    @keyframes dotBounce {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-10px); }
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 48px;
+      font-size: 0.85rem;
+      color: #aaa;
+    }
+
+    @media (max-width: 480px) {
+      .form-card { padding: 24px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <span class="emoji-burst">💡</span>
+      <h1>Got a Video Idea?</h1>
+      <p class="tagline">Share it with Reuben — you might just make it happen!</p>
+      <div class="reward-badge">🎁 Win $100 in merch if your idea gets filmed!</div>
+    </header>
+
+    <div class="video-wrap">
+      <iframe
+        src="https://www.youtube.com/embed/roo9_SlE0O8"
+        title="Reuben Schmit"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <p class="encourage">
+      Welcome! 👋 Share your creative ideas below.<br/>
+      <strong>Get featured in a video & get rewarded $100 in merch!</strong><br/>
+      Don't hold back — the weirder the better 😄
+    </p>
+
+    <div class="form-card" style="padding: 0; overflow: hidden; border-radius: 24px;">
+      <iframe
+        data-tally-src="https://tally.so/embed/EkXENq?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+        loading="lazy"
+        width="100%"
+        height="400"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Send Reuben Your Video Idea"
+        style="display:block;"
+      ></iframe>
+    </div>
+
+    <footer>Made with ❤️ for Reuben Schmit</footer>
+  </div>
+
+  <script src="https://tally.so/widgets/embed.js"></script>
+</body>
+</html>
